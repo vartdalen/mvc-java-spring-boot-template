@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+    template-application:
+        container_name: template-application
+        build:
+            context: .
+            dockerfile: Dockerfile
