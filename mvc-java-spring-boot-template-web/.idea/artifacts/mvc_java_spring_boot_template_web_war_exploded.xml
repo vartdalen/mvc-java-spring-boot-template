@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="mvc-java-spring-boot-template:war exploded">
-    <output-path>$PROJECT_DIR$/target/template-0.0.1</output-path>
+  <artifact type="exploded-war" name="mvc-java-spring-boot-template-web:war exploded">
+    <output-path>$PROJECT_DIR$/target/template-0.0.0.1</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>mvc-java-spring-boot-template</module>
+        <module>mvc-java-spring-boot-template-web</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="mvc-java-spring-boot-template" />
+          <element id="module-output" name="mvc-java-spring-boot-template-web" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.2.6.RELEASE" />
@@ -50,9 +50,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/template-0.0.1/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/template-0.0.0.1/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="mvc-java-spring-boot-template/web/Web" />
+      <element id="javaee-facet-resources" facet="mvc-java-spring-boot-template-web/web/Web" />
     </root>
   </artifact>
 </component>
