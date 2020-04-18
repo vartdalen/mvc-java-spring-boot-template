@@ -3,5 +3,8 @@ services:
     template-application:
         container_name: template-application
         build:
-            context: .
+            context: ./mvc-java-spring-boot-template-web/
             dockerfile: Dockerfile
+        image: vartdalen/mvc-java-spring-boot-template-application
+        ports:
+            - 8080:8080
