@@ -6,13 +6,13 @@ FROM adoptopenjdk:11-jre-hotspot
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8760
+EXPOSE 8080
 
 # The application's jar file
-ARG JAR_FILE=target/template-0.0.1.war
+ARG JAR_FILE=target/*.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} template-0.0.1.war
+COPY ${JAR_FILE} app.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","/template-0.0.1.war"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","/app.jar"]
