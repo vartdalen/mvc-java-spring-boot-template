@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vartdalen.mvc.java.spring</groupId>
-    <artifactId>template</artifactId>
-    <version>0.0.1</version>
-    <packaging>jar</packaging>
-    <name>template</name>
+    <groupId>vartdalen</groupId>
+    <artifactId>mvc-java-spring-boot-template</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>mvc-java-spring-boot-template</name>
     <description>Template for MVC Java Spring Boot Dockerized Web Application</description>
 
     <parent>
