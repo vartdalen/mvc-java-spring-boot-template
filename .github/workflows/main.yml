@@ -32,8 +32,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./mvc-java-spring-boot-template-web
-          file: ./Dockerfile
+          file: ./mvc-java-spring-boot-template-web/Dockerfile
           push: true
           tags: vartdalen/mvc-java-spring-boot-template:latest
       - name: Image digest
