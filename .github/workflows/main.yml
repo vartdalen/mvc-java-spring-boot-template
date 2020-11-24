@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ develop ]
 
+env:
+  dockerImageTag: vartdalen/mvc-java-spring-boot-template:latest
+  
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -24,12 +28,9 @@ jobs:
         with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          file: ./mvc-java-spring-boot-template-web/Dockerfile
-          push: true
-          tags: vartdalen/mvc-java-spring-boot-template:latest
+      - name: Docker build
+        run: docker build -t ${{ env.dockerImageTag }} ./mvc-java-spring-boot-template-web/Dockerfile
+      - name: Docker push
+        run: docker push ${{ env.dockerImageTag }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
