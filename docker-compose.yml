@@ -1,3 +1,4 @@
+# Not in use (could not find action supporting Docker Compose for CI (GitHub Actions)
 version: '3.7'
 services:
     template-application:
