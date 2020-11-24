@@ -35,6 +35,6 @@ jobs:
           context: ../../mvc-java-spring-boot-template-web
           file: ./Dockerfile
           push: true
-          tags: secrets.DOCKERHUB_USERNAME/mvc-java-spring-boot-template:latest
+          tags: vartdalen/mvc-java-spring-boot-template:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
