@@ -1,6 +1,6 @@
 #Dockerfile
 # Start with a base image containing Java runtime
-FROM adoptopenjdk:11-jre-hotspot
+FROM adoptopenjdk:11-jre-hotspot-focal
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
