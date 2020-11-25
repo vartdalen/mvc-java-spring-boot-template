@@ -26,7 +26,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       - name: Docker build
-        run: docker build -t vartdalen/mvc-java-spring-boot-template-x64:latest ./mvc-java-spring-boot-template-web/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t vartdalen/mvc-java-spring-boot-template-x64:latest ./mvc-java-spring-boot-template-web/.
       - name: Docker push
         run: docker push vartdalen/mvc-java-spring-boot-template-x64:latest
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       - name: Docker build
-        run: docker build -t vartdalen/mvc-java-spring-boot-template-x86:latest ./mvc-java-spring-boot-template-web/.
+        run: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t vartdalen/mvc-java-spring-boot-template-x86:latest ./mvc-java-spring-boot-template-web/.
       - name: Docker push
         run: docker push vartdalen/mvc-java-spring-boot-template-x86:latest
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
