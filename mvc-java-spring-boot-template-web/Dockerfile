@@ -1,7 +1,7 @@
 #Dockerfile
 # Start with a base image containing Java runtime
 
-FROM openjdk:11.0.6-jre-slim
+FROM openjdk:11.0.6-jre
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
