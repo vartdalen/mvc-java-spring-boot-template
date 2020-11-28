@@ -7,7 +7,7 @@ on:
     branches: [ develop ]
 
 jobs:
-  build-and-push-linux-amd64:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,31 +25,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
       - name: Docker build
-        run: docker buildx build --platform linux/amd64 -t vartdalen/mvc-java-spring-boot-template-linux-amd64:latest ./mvc-java-spring-boot-template-web/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t vartdalen/mvc-java-spring-boot-template:latest ./mvc-java-spring-boot-template-web/.
       - name: Docker push
-        run: docker push vartdalen/mvc-java-spring-boot-template-linux-amd64:latest
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-  build-and-push-linux-arm-v7:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11.0.6
-          architecture: x86
-      - name: Maven package
-        run: mvn -B package --file ./mvc-java-spring-boot-template-web/pom.xml
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-      - name: Docker build
-        run: docker buildx build --platform linux/arm/v7 -t vartdalen/mvc-java-spring-boot-template-linux-arm-v7:latest ./mvc-java-spring-boot-template-web/.
-      - name: Docker push
-        run: docker push vartdalen/mvc-java-spring-boot-template-linux-arm-v7:latest
+        run: docker push vartdalen/mvc-java-spring-boot-template:latest
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
