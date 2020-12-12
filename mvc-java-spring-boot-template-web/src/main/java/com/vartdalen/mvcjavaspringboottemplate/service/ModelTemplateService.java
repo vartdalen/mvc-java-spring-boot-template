@@ -17,7 +17,7 @@ public class ModelTemplateService {
     //private OtherModelTemplateService otherModelTemplateService;
 
     @Value("${server.address}:${server.port}/modelTemplates/") String BASE_URL;
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     public String helloWorld() {
         return "Hello, World";
