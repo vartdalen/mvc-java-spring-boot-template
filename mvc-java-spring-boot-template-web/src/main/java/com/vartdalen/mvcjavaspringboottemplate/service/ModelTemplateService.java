@@ -1,5 +1,5 @@
-package com.vartdalen.mvc.java.spring.template.service;
-import com.vartdalen.mvc.java.spring.template.model.ModelTemplate;
+package com.vartdalen.mvcjavaspringboottemplate.service;
+import com.vartdalen.mvcjavaspringboottemplate.model.ModelTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

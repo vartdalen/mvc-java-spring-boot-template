@@ -1,4 +1,4 @@
-package com.vartdalen.mvc.java.spring.template;
+package com.vartdalen.mvcjavaspringboottemplate;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

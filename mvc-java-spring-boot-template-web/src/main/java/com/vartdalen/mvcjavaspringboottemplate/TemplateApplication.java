@@ -1,4 +1,4 @@
-package com.vartdalen.mvc.java.spring.template;
+package com.vartdalen.mvcjavaspringboottemplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

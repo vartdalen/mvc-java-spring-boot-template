@@ -1,6 +1,6 @@
-package com.vartdalen.mvc.java.spring.template.controller;
-import com.vartdalen.mvc.java.spring.template.model.ModelTemplate;
-import com.vartdalen.mvc.java.spring.template.service.ModelTemplateService;
+package com.vartdalen.mvcjavaspringboottemplate.controller;
+import com.vartdalen.mvcjavaspringboottemplate.model.ModelTemplate;
+import com.vartdalen.mvcjavaspringboottemplate.service.ModelTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

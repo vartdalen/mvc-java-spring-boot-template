@@ -1,4 +1,4 @@
-package com.vartdalen.mvc.java.spring.template;
+package com.vartdalen.mvcjavaspringboottemplate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

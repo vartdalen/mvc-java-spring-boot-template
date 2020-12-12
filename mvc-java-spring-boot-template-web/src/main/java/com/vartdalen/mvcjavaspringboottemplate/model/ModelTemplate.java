@@ -1,4 +1,4 @@
-package com.vartdalen.mvc.java.spring.template.model;
+package com.vartdalen.mvcjavaspringboottemplate.model;
 
 public class ModelTemplate {
     private long id;
