@@ -16,7 +16,7 @@ public class ModelTemplateService {
     //@Autowired
     //private OtherModelTemplateService otherModelTemplateService;
 
-    @Value("${server.address}:${server.port}/modelTemplates") String BASE_URL;
+    @Value("${server.address}:${server.port}/modelTemplates/") String BASE_URL;
     private RestTemplate restTemplate = new RestTemplate();
 
     public String helloWorld() {
@@ -28,7 +28,7 @@ public class ModelTemplateService {
     }
 
     public ModelTemplate getModelTemplateById(long id) {
-        return restTemplate.getForObject(BASE_URL+"/"+id, ModelTemplate.class);
+        return restTemplate.getForObject(BASE_URL+id, ModelTemplate.class);
     }
 
     public ModelTemplate postModelTemplate(ModelTemplate modelTemplate) {
@@ -37,7 +37,7 @@ public class ModelTemplateService {
         return response.getBody();
     }
 
-    public void putModelTemplate(long id, ModelTemplate modelTemplate) { restTemplate.put(BASE_URL+"/"+id, modelTemplate); }
+    public void putModelTemplate(long id, ModelTemplate modelTemplate) { restTemplate.put(BASE_URL+id, modelTemplate); }
 
     public void deleteModelTemplate(long id) {
 //        cascading (otherModelTemplate)
@@ -47,6 +47,6 @@ public class ModelTemplateService {
 //                otherModelTemplateService.deleteOtherModelTemplateById(otherModelTemplate.getId());
 //            }
 //        }
-        restTemplate.delete(BASE_URL+"/"+id);
+        restTemplate.delete(BASE_URL+id);
     }
 }
