@@ -23,25 +23,25 @@ public class ModelTemplateController {
     }
 
     @GetMapping("/get")
-    public @ResponseBody List<ModelTemplate> getModelTemplates() {
-        return modelTemplateService.getModelTemplates();
+    public @ResponseBody ModelTemplate[] get() {
+        return modelTemplateService.get();
     }
 
     @PostMapping("/post")
     public String post(@ModelAttribute("modelTemplate") ModelTemplate modelTemplate) {
-        modelTemplateService.postModelTemplate(modelTemplate);
+        modelTemplateService.post(modelTemplate);
         return "redirect:/";
     }
 
     @PutMapping("/put")
     public String put(@ModelAttribute("modelTemplate") ModelTemplate modelTemplate) {
-        modelTemplateService.putModelTemplate(modelTemplate.getId(), modelTemplate);
+        modelTemplateService.put(modelTemplate.getId(), modelTemplate);
         return "redirect:/";
     }
 
     @DeleteMapping("/delete/{idModelTemplate}")
     public String delete(@PathVariable("idModelTemplate") String idModelTemplate) {
-            modelTemplateService.deleteModelTemplate(Long.parseLong(idModelTemplate));
+            modelTemplateService.delete(Long.parseLong(idModelTemplate));
         return "redirect:/";
     }
 }
