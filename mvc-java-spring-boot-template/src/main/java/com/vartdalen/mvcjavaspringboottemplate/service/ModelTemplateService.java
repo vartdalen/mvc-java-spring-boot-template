@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
 @Service
 public class ModelTemplateService {
 
-    //@Autowired
-    //private OtherModelTemplateService otherModelTemplateService;
-
     @Value("${server.address}:${server.port}/modelTemplates/") String BASE_URL;
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -23,30 +20,23 @@ public class ModelTemplateService {
         return "Hello, World";
     }
 
-    public List<ModelTemplate> getModelTemplates() {
-        return Arrays.stream(restTemplate.getForObject(BASE_URL, ModelTemplate[].class)).collect(Collectors.toList());
+    public ModelTemplate[] get() {
+        return restTemplate.getForObject(BASE_URL, ModelTemplate[].class);
     }
 
-    public ModelTemplate getModelTemplateById(long id) {
+    public ModelTemplate get(long id) {
         return restTemplate.getForObject(BASE_URL+id, ModelTemplate.class);
     }
 
-    public ModelTemplate postModelTemplate(ModelTemplate modelTemplate) {
+    public ModelTemplate post(ModelTemplate modelTemplate) {
         ResponseEntity<ModelTemplate> response;
         response = restTemplate.postForEntity(BASE_URL, modelTemplate, ModelTemplate.class);
         return response.getBody();
     }
 
-    public void putModelTemplate(long id, ModelTemplate modelTemplate) { restTemplate.put(BASE_URL+id, modelTemplate); }
+    public void put(long id, ModelTemplate modelTemplate) { restTemplate.put(BASE_URL+id, modelTemplate); }
 
-    public void deleteModelTemplate(long id) {
-//        cascading (otherModelTemplate)
-//        List<OtherModelTemplate> otherModelTemplateList = otherModelTemplateService.getAllOtherModelTemplates();
-//        for(OtherModelTemplate otherModelTemplate: otherModelTemplateList) {
-//            if (otherModelTemplate.getIdModelTemplate() == id) {
-//                otherModelTemplateService.deleteOtherModelTemplateById(otherModelTemplate.getId());
-//            }
-//        }
+    public void delete(long id) {
         restTemplate.delete(BASE_URL+id);
     }
 }
