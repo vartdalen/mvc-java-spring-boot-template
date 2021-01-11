@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class ModelTemplateService {
 
-    @Value("${server.address}:${server.port}/modelTemplates/") String BASE_URL;
+    @Value("http://${server.datasource.address}:${server.datasource.port}/modelTemplates/") String BASE_URL;
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String helloWorld() {
