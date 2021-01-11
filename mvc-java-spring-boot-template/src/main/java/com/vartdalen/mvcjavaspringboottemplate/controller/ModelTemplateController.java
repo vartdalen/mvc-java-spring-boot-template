@@ -2,12 +2,12 @@ package com.vartdalen.mvcjavaspringboottemplate.controller;
 import com.vartdalen.mvcjavaspringboottemplate.model.ModelTemplate;
 import com.vartdalen.mvcjavaspringboottemplate.service.ModelTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/modelTemplates")
+@RequestMapping("/api/modelTemplates")
 public class ModelTemplateController {
 
     private final ModelTemplateService modelTemplateService;
@@ -18,30 +18,38 @@ public class ModelTemplateController {
     }
 
     @RequestMapping("/helloWorld")
-    public @ResponseBody String helloWorld() {
+    @ResponseBody
+    public String helloWorld() {
         return modelTemplateService.helloWorld();
     }
 
-    @GetMapping("/get")
-    public @ResponseBody ModelTemplate[] get() {
+    @GetMapping("/")
+    @ResponseBody
+    public ResponseEntity<ModelTemplate[]> get() {
         return modelTemplateService.get();
     }
 
-    @PostMapping("/post")
-    public String post(@ModelAttribute("modelTemplate") ModelTemplate modelTemplate) {
-        modelTemplateService.post(modelTemplate);
-        return "redirect:/";
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<ModelTemplate> get(@PathVariable long id) {
+        return modelTemplateService.get(id);
     }
 
-    @PutMapping("/put")
-    public String put(@ModelAttribute("modelTemplate") ModelTemplate modelTemplate) {
-        modelTemplateService.put(modelTemplate.getId(), modelTemplate);
-        return "redirect:/";
+    @PostMapping("")
+    public ResponseEntity<ModelTemplate> post(@RequestBody ModelTemplate modelTemplate) {
+        return modelTemplateService.post(modelTemplate);
     }
 
-    @DeleteMapping("/delete/{idModelTemplate}")
-    public String delete(@PathVariable("idModelTemplate") String idModelTemplate) {
-            modelTemplateService.delete(Long.parseLong(idModelTemplate));
-        return "redirect:/";
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> put(@PathVariable long id, @RequestBody ModelTemplate modelTemplate) {
+        if (modelTemplate.getId() > -1) { throw new RuntimeException("Value of field 'id' is invalid. Expected: null"); }
+        modelTemplateService.put(id, modelTemplate);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+        modelTemplateService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
