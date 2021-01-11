@@ -1,14 +1,9 @@
 package com.vartdalen.mvcjavaspringboottemplate.service;
 import com.vartdalen.mvcjavaspringboottemplate.model.ModelTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ModelTemplateService {
@@ -20,18 +15,16 @@ public class ModelTemplateService {
         return "Hello, World";
     }
 
-    public ModelTemplate[] get() {
-        return restTemplate.getForObject(BASE_URL, ModelTemplate[].class);
+    public ResponseEntity<ModelTemplate[]> get() {
+        return restTemplate.getForEntity(BASE_URL, ModelTemplate[].class);
     }
 
-    public ModelTemplate get(long id) {
-        return restTemplate.getForObject(BASE_URL+id, ModelTemplate.class);
+    public ResponseEntity<ModelTemplate> get(long id) {
+        return restTemplate.getForEntity(BASE_URL+id, ModelTemplate.class);
     }
 
-    public ModelTemplate post(ModelTemplate modelTemplate) {
-        ResponseEntity<ModelTemplate> response;
-        response = restTemplate.postForEntity(BASE_URL, modelTemplate, ModelTemplate.class);
-        return response.getBody();
+    public ResponseEntity<ModelTemplate> post(ModelTemplate modelTemplate) {
+        return restTemplate.postForEntity(BASE_URL, modelTemplate, ModelTemplate.class);
     }
 
     public void put(long id, ModelTemplate modelTemplate) { restTemplate.put(BASE_URL+id, modelTemplate); }
